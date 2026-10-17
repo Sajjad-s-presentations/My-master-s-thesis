@@ -1,0 +1,6 @@
+aggregation_ms,clients,decryption_ms,encryption_ms,error,expected,homomorphic_test,key_bits,keygen_ms,operation,result,s,scheme,total_ms,weighted_average
+11.7069,100,43.3571,3819.3751,0.0,0.472927304964539,PASS,1024,292.1688,additive,0.472927304964539,,paillier,4166.6079,PASS
+11.9147,100,31.8519,3176.5008,0.0,0.472927304964539,PASS,1024,276.964,additive,0.472927304964539,1,damgard_jurik,3497.2314,PASS
+3.315,100,16.9272,45.1094,0.0,0.472927304964539,PASS,1024,310.4154,additive,0.472927304964539,,benaloh,375.767,PASS
+10.0805,100,,,0,7*11,PASS,1024,412.068,multiplicative,77,,rsa,422.1485,NOT_APPLICABLE
+35.5111,100,,,0,7*11,PASS,1024,224079.3934,multiplicative,77,,elgamal,224114.9045,NOT_APPLICABLE
