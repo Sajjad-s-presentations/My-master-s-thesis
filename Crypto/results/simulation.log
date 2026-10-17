@@ -1,0 +1,23 @@
+[001] SYSTEM       Start simulation                   paillier, clients=5, bits=256
+[002] SERVER       Generate key pair                  6.286 ms
+[003] SERVER       Publish public key                 clients receive public parameters
+[004] CLIENT-001   Create plaintext                   encoded=1824, weight=3
+[005] CLIENT-001   Encrypt plaintext                  1.070 ms
+[006] SERVER       Receive ciphertext                 client=1; plaintext hidden
+[007] CLIENT-002   Create plaintext                   encoded=409, weight=2
+[008] CLIENT-002   Encrypt plaintext                  0.980 ms
+[009] SERVER       Receive ciphertext                 client=2; plaintext hidden
+[010] CLIENT-003   Create plaintext                   encoded=4506, weight=9
+[011] CLIENT-003   Encrypt plaintext                  1.025 ms
+[012] SERVER       Receive ciphertext                 client=3; plaintext hidden
+[013] CLIENT-004   Create plaintext                   encoded=4012, weight=2
+[014] CLIENT-004   Encrypt plaintext                  1.142 ms
+[015] SERVER       Receive ciphertext                 client=4; plaintext hidden
+[016] CLIENT-005   Create plaintext                   encoded=3657, weight=10
+[017] CLIENT-005   Encrypt plaintext                  1.038 ms
+[018] SERVER       Receive ciphertext                 client=5; plaintext hidden
+[019] SERVER       Homomorphic aggregation            0.090 ms
+[020] SERVER       Decrypt final aggregate            encoded_sum=91438
+[021] SERVER       Weighted average                   0.35168462
+[022] VERIFY       Correctness                        expected=0.35168462; error=0.0000000000
+[023] SYSTEM       Simulation finished                results/simulation.log
