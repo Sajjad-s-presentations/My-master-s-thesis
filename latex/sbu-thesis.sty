@@ -1,0 +1,63 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sbu-thesis}[2026/10/30 Persian thesis reconstructed from the supplied SBU PDF]
+\RequirePackage[a4paper,top=27mm,bottom=27mm,inner=30mm,outer=25mm,headheight=18pt]{geometry}
+\RequirePackage{amsmath,amssymb,mathtools}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs,longtable,tabularx,array,multirow}
+\RequirePackage{float,placeins}
+\RequirePackage{caption}
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
+\RequirePackage{xcolor}
+\RequirePackage{listings}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\RequirePackage[unicode,hidelinks,bookmarksnumbered]{hyperref}
+% XePersian/bidi must be loaded after packages that alter layout or direction.
+\RequirePackage{xepersian}
+\settextfont[Path=fonts/,BoldFont=BZar-Bold.ttf,Scale=1.10]{BZar.ttf}
+\settextdigitfont[Path=fonts/]{BZar.ttf}
+\DefaultMathDigits
+\setlatintextfont{Latin Modern Roman}
+\setmonofont[Scale=0.83]{DejaVu Sans Mono}
+\onehalfspacing
+\setlength{\parindent}{0.6cm}
+\setlength{\parskip}{3pt}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\renewcommand{\contentsname}{فهرست مطالب}
+\renewcommand{\listfigurename}{فهرست شکل‌ها}
+\renewcommand{\listtablename}{فهرست جدول‌ها}
+\renewcommand{\bibname}{منابع و مآخذ}
+\renewcommand{\figurename}{شکل}
+\renewcommand{\tablename}{جدول}
+\renewcommand{\chaptername}{فصل}
+\renewcommand{\appendixname}{پیوست}
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+\renewcommand{\theequation}{\thechapter-\arabic{equation}}
+\captionsetup{font=small,labelfont=bf,labelsep=colon,justification=centering}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[R]{\small\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\setlist{itemsep=2pt,topsep=5pt}
+\graphicspath{{figures/}{figures/original/}{figures/federated/}{figures/models/}}
+\DeclareMathOperator{\Enc}{Enc}
+\DeclareMathOperator{\Dec}{Dec}
+\DeclareMathOperator{\Sign}{Sign}
+\DeclareMathOperator{\Verify}{Verify}
+\DeclareMathOperator{\lcm}{lcm}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\en}[1]{\lr{#1}}
+\newcommand{\sourcepage}[1]{} % Migration provenance in editable source, not printed text.
+\newcommand{\thesistitle}{حفظ امنیت داده‌های حساس در پیش‌بینی خودکشی با رویکردی مبتنی بر یادگیری مشارکتی و رمزگذاری همریخت در پردازش زبان طبیعی}
+\hypersetup{pdftitle={\thesistitle},pdfauthor={سجاد رنجبر یزدی},pdfsubject={پایان‌نامهٔ کارشناسی ارشد علوم کامپیوتر}}
+\lstset{basicstyle=\ttfamily\scriptsize,breaklines=true,columns=fullflexible,
+  frame=single,keepspaces=true,showstringspaces=false,upquote=true}
+\emergencystretch=3em

@@ -1,0 +1,242 @@
+[
+  {
+    "page": 2,
+    "path": "figures/original/university-logo.png",
+    "width": 247,
+    "height": 247,
+    "sha256": "f668c1554940bbdf079e1d746b557dea7250a2c81f84e03742d3efa90a27e2c4",
+    "superseded": false
+  },
+  {
+    "page": 28,
+    "path": "figures/original/federated-architecture.jpeg",
+    "width": 1280,
+    "height": 720,
+    "sha256": "cd0e4c7abf5241e2e0926a21c75a7289232259049c66238dda3104ef2ebcfa43",
+    "superseded": false
+  },
+  {
+    "page": 34,
+    "path": "figures/original/literature-overview.jpeg",
+    "width": 1375,
+    "height": 561,
+    "sha256": "b88e7d7b927d2a5284cd618c8317d642c241f8c7b14e622613ffa66f0d564543",
+    "superseded": false
+  },
+  {
+    "page": 41,
+    "path": "figures/original/nlp-workflow.jpeg",
+    "width": 1122,
+    "height": 1402,
+    "sha256": "cf92530431d5c5e75243a4febf8c9e0fab1273e2be28a24bd6ea0fa78c21767c",
+    "superseded": false
+  },
+  {
+    "page": 44,
+    "path": "figures/original/text-cleaning.jpeg",
+    "width": 816,
+    "height": 1140,
+    "sha256": "222100b083c312dec5ee8bba511055d04b4c03e067990b78fcff90f7e6c7c1f9",
+    "superseded": false
+  },
+  {
+    "page": 57,
+    "path": "figures/original/random-forest-flow.jpeg",
+    "width": 1280,
+    "height": 720,
+    "sha256": "18fe709b74c1d14e30c6f544c0cf8737bbbefa70e7192d227e08879dbd7e766b",
+    "superseded": false
+  },
+  {
+    "page": 60,
+    "path": "figures/original/old-random-forest-confusion.png",
+    "width": 531,
+    "height": 470,
+    "sha256": "d3f75d378b6cd14eefc8b2746705b77de1391675c4a43a852b7848ee624cef59",
+    "superseded": true
+  },
+  {
+    "page": 62,
+    "path": "figures/original/decision-tree-flow.jpeg",
+    "width": 1280,
+    "height": 720,
+    "sha256": "a069f3e6ccd3891ab5301f49e407668142c506f5040f76c4a3c543dce3adf4e6",
+    "superseded": false
+  },
+  {
+    "page": 66,
+    "path": "figures/original/old-decision-tree-confusion.png",
+    "width": 537,
+    "height": 413,
+    "sha256": "09ba2996884e9a9b93e0ae1818ff26a44296cfc3f13c836e064920382c6f6459",
+    "superseded": true
+  },
+  {
+    "page": 67,
+    "path": "figures/original/xgboost-flow.jpeg",
+    "width": 1280,
+    "height": 720,
+    "sha256": "7f59c043d70d9e0ea18a35dca9aacf297c6c3016e442ed4a18b1aa1677529de9",
+    "superseded": false
+  },
+  {
+    "page": 72,
+    "path": "figures/original/old-xgboost-confusion.png",
+    "width": 537,
+    "height": 413,
+    "sha256": "15bc4c5e5329629df795ca44f41dc88a780cdd853f935a7e73e5bb4c0c67108f",
+    "superseded": true
+  },
+  {
+    "page": 73,
+    "path": "figures/original/bayes-model.jpeg",
+    "width": 1280,
+    "height": 720,
+    "sha256": "e247d594c47ab9f77587eb9e6d4f86cfca83103260d726bc38173063e9f47f95",
+    "superseded": false
+  },
+  {
+    "page": 79,
+    "path": "figures/original/old-naive-bayes-confusion.png",
+    "width": 537,
+    "height": 413,
+    "sha256": "91f6f6f5ca74aacdecc0361ac26e51f8b317f5f0d5d1c362047d208b8f3ad7ff",
+    "superseded": true
+  },
+  {
+    "page": 84,
+    "path": "figures/original/old-threshold-analysis.png",
+    "width": 1187,
+    "height": 989,
+    "sha256": "94c903599c7cd5bfc826074bac73a8fa603b296441fa21d900d116c8b2df76be",
+    "superseded": true
+  },
+  {
+    "page": 87,
+    "path": "figures/original/old-error-distribution.png",
+    "width": 1389,
+    "height": 990,
+    "sha256": "e895d4fe2078882b36ca6d9f66a62006a1e7200d8b641ade0cf308e502e7284b",
+    "superseded": true
+  },
+  {
+    "page": 94,
+    "path": "figures/original/aes-shamir-workflow.jpeg",
+    "width": 1024,
+    "height": 1536,
+    "sha256": "35355d17c48182580d51451866ffe8bf289c80891564b8958f4226cdd377a673",
+    "superseded": false
+  },
+  {
+    "page": 98,
+    "path": "figures/original/elgamal-workflow.jpeg",
+    "width": 1024,
+    "height": 681,
+    "sha256": "d918d8a20713f1e53323edce8cc75c42a754d158537f084dd1e62ff19eb6985a",
+    "superseded": false
+  },
+  {
+    "page": 101,
+    "path": "figures/original/paillier-workflow.jpeg",
+    "width": 1112,
+    "height": 741,
+    "sha256": "e9390c5e1c7a45e929aadc0cbab366fc00741a2d14f5176c9df6296bfb2d70e4",
+    "superseded": false
+  },
+  {
+    "page": 104,
+    "path": "figures/original/benaloh-workflow.jpeg",
+    "width": 1341,
+    "height": 890,
+    "sha256": "9c877c3e73b56b6a2456c95836cd0f139fd852c29f807dfa92f39767b1f913a1",
+    "superseded": false
+  },
+  {
+    "page": 112,
+    "path": "figures/original/crypto-key-generation.jpeg",
+    "width": 1371,
+    "height": 986,
+    "sha256": "48efef32e91c6b1da931b27df74564f10fbb8dd6f9698cd35640981a0be4a00e",
+    "superseded": false
+  },
+  {
+    "page": 113,
+    "path": "figures/original/crypto-encryption.png",
+    "width": 1376,
+    "height": 1028,
+    "sha256": "08221b8c46c8008fe2128f4849efd4119eeab558a0799b676f6e2d6dceaa5ae2",
+    "superseded": false
+  },
+  {
+    "page": 115,
+    "path": "figures/original/crypto-total-time.png",
+    "width": 1375,
+    "height": 779,
+    "sha256": "d27436cb6bb516ca16bb641d2286882eca9af32e2bf195e82fc582643f9f64ff",
+    "superseded": false
+  },
+  {
+    "page": 118,
+    "path": "figures/original/crypto-performance.png",
+    "width": 1377,
+    "height": 779,
+    "sha256": "2494169e78ff77dd7c5a9cd6e46a4ff8c3765847b738b11ff0034e16bbb24049",
+    "superseded": false
+  },
+  {
+    "page": 121,
+    "path": "figures/original/sbhe-workflow.jpeg",
+    "width": 1374,
+    "height": 916,
+    "sha256": "1d02c543f734c3bf2e8558d0cef64fc08bba50e54738fd17c18f6a89f2d2b02c",
+    "superseded": false
+  },
+  {
+    "page": 132,
+    "path": "figures/original/sbhe-performance.png",
+    "width": 1379,
+    "height": 537,
+    "sha256": "78ed5303471c87baeb3d79e86ab22ee439a0606bed4e5dade95883b8fbfc0fab",
+    "superseded": false
+  },
+  {
+    "page": 133,
+    "path": "figures/original/sbhe-phases.png",
+    "width": 1376,
+    "height": 1022,
+    "sha256": "26b165c37b7eb36bed331d59cabf289c8894bd3a61915d33526692c5d140064c",
+    "superseded": false
+  },
+  {
+    "page": 134,
+    "path": "figures/original/sbhe-phase-shares.png",
+    "width": 1378,
+    "height": 511,
+    "sha256": "d50a283912d3558e962d100ed5aa0db184cb21abfbdcec80721ebb2bfd3cc67e",
+    "superseded": false
+  },
+  {
+    "page": 135,
+    "path": "figures/original/sbhe-scalability.png",
+    "width": 1377,
+    "height": 521,
+    "sha256": "20d2f4d02411c0781356610c3c9726e9999fe393c61d64abce040ae28aa40823",
+    "superseded": false
+  },
+  {
+    "page": 140,
+    "path": "figures/original/dena-architecture.jpeg",
+    "width": 1374,
+    "height": 916,
+    "sha256": "eb8377719814fbdae574188f528ec612dbc916e89995e994b8333b5673802428",
+    "superseded": false
+  },
+  {
+    "page": 172,
+    "path": "figures/original/university-logo-en.png",
+    "width": 247,
+    "height": 247,
+    "sha256": "f668c1554940bbdf079e1d746b557dea7250a2c81f84e03742d3efa90a27e2c4",
+    "superseded": false
+  }
+]
