@@ -1,0 +1,19 @@
+\begin{tikzpicture}[
+  node distance=6mm,
+  stage/.style={draw=blue!50!black,fill=blue!3,rounded corners=3pt,
+    inner sep=7pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=blue!50!black}]
+\node[stage] (key) {\diagramtext{گروه دوری معتبر $G=\langle g\rangle$ با مرتبۀ $q$\\
+  کلید خصوصی $x$؛ کلید عمومی $y=g^x$؛ توان‌ها در $\Z_q$}};
+\node[stage,below=of key] (enc) {\diagramtext{پیام گروهی $m\in G$ و توان تصادفی تازۀ $k$\\
+  $c=(c_1,c_2)=(g^k,my^k)$}};
+\node[stage,below=of enc] (agg) {\diagramtext{خاصیت ضربی با ضرب مؤلفه‌به‌مؤلفه\\
+  $c\otimes c'=(c_1c'_1,c_2c'_2)$\\
+  این عملیات متناظر با ضرب پیام‌هاست}};
+\node[stage,below=of agg] (dec) {\diagramtext{رمزگشایی با وارونۀ گروهی\\
+  $m=c_2(c_1^x)^{-1}$\\
+  $\Dec(c\otimes c')=mm'$؛ عملیات در گروه $G$ انجام می‌شوند}};
+\node[stage,below=of dec] (security) {\diagramtext{امنیت معنایی مستلزم فرض مناسب \en{DDH} در گروه است\\
+  طرح پایه تغییرپذیر است و احراز اصالت پیام را فراهم نمی‌کند}};
+\foreach \a/\b in {key/enc,enc/agg,agg/dec,dec/security}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

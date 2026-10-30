@@ -1,0 +1,70 @@
+\cleardoublepage
+\begin{latin}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{چکیدۀ انگلیسی}
+\markboth{Abstract}{Abstract}
+\begingroup
+\setstretch{1.15}
+Text-based analysis of suicide-related signals requires both valid evaluation and
+careful treatment of sensitive mental-health information. This thesis examines
+text classification, distributed probability aggregation, and authenticated
+homomorphic weighted aggregation. The English Suicide Watch dataset contains
+232,074 raw records. Deduplication, stratified splitting, and partition-aware
+cleaning yield 148,380 training, 37,086 validation, and 46,342 test records.
+A 100-dimensional Word2Vec representation is learned inside each training fold.
+Random Forest, Decision Tree, XGBoost, and Gaussian\lr{--}Bernoulli soft voting are
+compared on validation data. The model and threshold are frozen before final test
+evaluation. The centralized evaluation selects \BestModelEnglish, with threshold
+\BestThreshold, test accuracy \BestTestAccuracyPercent\ percent, and positive-class
+F1 of \BestTestFone.
+
+The distributed experiment assigns every training record exactly once using
+class-stratified, approximately IID partitions for 10, 20, 50, and 100 clients.
+Each client learns its own Word2Vec and XGBoost model. Predictions are combined by
+a sample-count-weighted mean, rather than by averaging independently learned
+tree parameters or embedding coordinates. Archived test accuracies at
+validation-selected thresholds are 91.58, 90.93, 89.30, and 87.00 percent,
+respectively. The 10-client scenario is selected using validation F1. Only one
+seed is available per scenario; across-run uncertainty is not estimated.
+
+The SBHE-Benaloh implementation verifies an Ed25519 signature over a deterministic
+transcript containing identity, round, nonce, ciphertext, and weight before
+aggregation. The signature is kept outside the ciphertext algebra. Correctness
+requires an explicit fixed-point representation and sufficient plaintext-space
+capacity. Archived 256-bit research-key benchmarks report mean total times of
+approximately 119.02 and 275.68 milliseconds for 100 and 300 clients. These are
+separate cryptographic benchmarks, not end-to-end encrypted classification
+measurements. The analysis explicitly distinguishes the private-key-owning
+server from external observers and documents the absence of range proofs and
+threshold decryption. The findings support further research and do not establish
+clinical readiness or production cryptographic security.
+
+\medskip\noindent
+\textbf{Keywords:} Natural language processing; distributed learning;
+stratified partitioning; Word2Vec; threshold selection; homomorphic encryption;
+Benaloh; digital signatures; privacy.
+\par\endgroup
+\end{latin}
+
+\clearpage
+\begingroup
+\thispagestyle{empty}
+\begin{latin}
+\begin{center}
+\includegraphics[width=2.7cm]{original/university-logo-en.png}\\[0.6cm]
+{\Large\bfseries Shahid Beheshti University}\\[0.3cm]
+Faculty of Mathematical Sciences\\
+Department of Computer Science\\[1cm]
+{\large M.Sc. Thesis}\\[1cm]
+{\Large\bfseries Securing Sensitive Data in Suicide Prediction with a Federated
+Learning and Homomorphic Encryption Approach in Natural Language Processing}\\[1.2cm]
+By\\[0.3cm]
+{\large Sajjad Ranjbar Yazdi}\\[0.9cm]
+Supervisor\\[0.3cm]
+{\large Dr. Ziba Eslami}
+\vfill
+September 2026
+\end{center}
+\end{latin}
+\clearpage
+\endgroup

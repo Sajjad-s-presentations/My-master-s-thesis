@@ -1,0 +1,68 @@
+\section{نتایج ارزیابی مدل‌ها}
+\label{sec:model-results}
+نتایج این بخش از اجرای کامل نوت‌بوک اصلاح‌شده روی همان نسخۀ داده با هش ثبت‌شده به دست آمده‌اند؛ خروجی اجرا، جدول‌های \en{CSV}، نمودارها و فرادادۀ نسخه‌ها در کنار منبع پایان‌نامه بایگانی شده‌اند. نسخه‌های \en{NumPy}، \en{pandas}، \en{SciPy}، \en{scikit-learn}، \en{Gensim} و \en{XGBoost} با نسخه‌های ثبت‌شده در آزمایش مشارکتی همسان‌سازی شده‌اند.
+
+\subsection{مقایسه بر اعتبارسنجی}
+جدول~\ref{tab:models-validation} برای تمام چهار مدل از مجموعۀ اعتبارسنجی مشترک استفاده می‌کند. آستانۀ هر مدل نیز فقط روی همین بخش انتخاب شده است. این اعداد برآورد نهایی آزمون نیستند و باید در همان نقشِ انتخاب مدل تفسیر شوند. مدل \BestModel با $F_1$ مثبتِ اعتبارسنجی \BestValFone\ در صدر قاعدۀ رتبه‌بندی قرار گرفته و آستانۀ \BestThreshold\ پیش از ارزیابی آزمون تثبیت شده است.
+
+\input{results/models/tables}
+
+مقدارهای منتخب جست‌وجو در جدول~\ref{tab:models-hyperparameters} آمده‌اند. زمان‌های آموزش یا جست‌وجوی ثبت‌شده شامل بار کاری یکسان نیستند: دو مدل جست‌وجوی اعتبارسنجی متقابل دارند و دو مدل مستقیماً برازش می‌شوند. علاوه بر آن، حافظۀ نهان برخی تبدیل‌های بازنمایی را بازاستفاده می‌کند. بنابراین این زمان‌ها مستند اجرای آزمایش‌اند و به‌تنهایی رتبه‌بندی منصفانۀ سرعت ذاتی الگوریتم‌ها ایجاد نمی‌کنند.
+
+\begin{figure}[p]
+\centering\includegraphics[width=0.72\textwidth]{models/validation-confusion-random-forest.pdf}
+\caption{ماتریس سردرگمی جنگل تصادفی بر اعتبارسنجی، با آستانۀ منتخب همان بخش}
+\label{fig:rf-validation}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=0.72\textwidth]{models/validation-confusion-decision-tree.pdf}
+\caption{ماتریس سردرگمی درخت تصمیم بر اعتبارسنجی، با آستانۀ منتخب همان بخش}
+\label{fig:dt-validation}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=0.72\textwidth]{models/validation-confusion-xgboost.pdf}
+\caption{ماتریس سردرگمی \en{XGBoost} بر اعتبارسنجی}
+\label{fig:xgb-validation}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=0.72\textwidth]{models/validation-confusion-naive-bayes-voting.pdf}
+\caption{ماتریس سردرگمی رأی‌گیری بیز گاوسی\lr{--}برنولی بر اعتبارسنجی}
+\label{fig:nb-validation}
+\end{figure}
+
+\subsection{ارزیابی نهایی مدل تثبیت‌شده}
+در آستانۀ منتخب، مدل \BestModel دقت آزمون \BestTestAccuracyPercent\ درصد، دقت مثبت \BestTestPrecision، بازیابی مثبت \BestTestRecall\ و $F_1$ مثبت \BestTestFone\ دارد. معیار \en{ROC AUC} آن \BestTestAUC\ است. این معیار مستقل از انتخاب یک آستانۀ ثابت است، اما از همان پیش‌بینی‌های مدل نهایی روی آزمون محاسبه می‌شود. جدول آزمون دو تنظیمِ آستانۀ ۰٫۵ و آستانۀ منتخب اعتبارسنجی را برای همان مدل گزارش می‌کند؛ مدل با نگاه به بهتر بودن یکی از اعداد آزمون دوباره انتخاب نشده است.
+
+در همین آزمون، آستانۀ پیش‌فرض ۰٫۵ دقت \DefaultTestAccuracyPercent\ درصد، $F_1$ مثبت \DefaultTestFone\ و بازیابی مثبت \DefaultTestRecall\ دارد. بنابراین آستانۀ منتخب اعتبارسنجی در آزمون، بازیابی را افزایش داده اما دقت کلی و $F_1$ مثبت را اندکی کاهش داده است. بهینه بودن بر اعتبارسنجی، تضمین بهبود تمام معیارهای آزمون نیست. گزارش هر دو تنظیم، این مبادله را آشکار می‌کند؛ آستانه با نگاه به نتیجۀ آزمون دوباره انتخاب نشده است.
+
+\begin{figure}[htbp]
+% The original 16 by 4.5 inch vector plot has three equal-width panels.
+% Print each panel separately so axis labels remain readable on A4.
+\centering\includegraphics[trim=0 0 768bp 0,clip,width=0.72\textwidth]{models/final-test.pdf}
+\caption{ماتریس سردرگمی آزمون نهایی برای انتخاب تثبیت‌شدۀ \BestModel}
+\label{fig:final-test}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[trim=384bp 0 384bp 0,clip,width=0.72\textwidth]{models/final-test.pdf}
+\caption{منحنی \en{ROC} مدل منتخب در آزمون نهایی}
+\label{fig:final-test-roc}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[trim=768bp 0 0 0,clip,width=0.72\textwidth]{models/final-test.pdf}
+\caption{منحنی دقت مثبت\lr{--}بازیابی مدل منتخب در آزمون نهایی}
+\label{fig:final-test-pr}
+\end{figure}
+
+\section{تحلیل حساسیت نسبت به آستانه و خطا}
+نمودار~\ref{fig:validation-thresholds} معیارهای اعتبارسنجی را در دامنۀ آستانه‌ها نشان می‌دهد. کاهش آستانه معمولاً تعداد مثبت‌های پیش‌بینی‌شده را افزایش می‌دهد و می‌تواند بازیابی را به قیمت مثبت کاذب بیشتر بالا ببرد. افزایش آستانه نیز می‌تواند دقت مثبت را به قیمت منفی کاذب بیشتر تغییر دهد. این مبادله باید با شمارش واقعی خطا و هدف کاربردی بررسی شود؛ «افزایش حساسیت» به معنای بهبود قطعی تمام معیارها نیست.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{models/validation-thresholds.pdf}
+\caption{تحلیل حساسیت چهار مدل فقط بر اعتبارسنجی؛ خط عمودی آستانۀ منتخب را نشان می‌دهد}
+\label{fig:validation-thresholds}
+\end{figure}
+
+انتخاب آستانه با کالیبراسیون احتمال تفاوت دارد. در این آزمایش، کالیبراسیون \en{Platt} یا \en{isotonic} مستقل اجرا نشده و احتمال مدل نباید بی‌واسطه به‌عنوان ریسک بالینی کالیبره‌شده تفسیر شود. منحنی‌های آستانه و شمارش خطا، شواهد مستقیم این اجرا هستند. ارزیابی توزیع خطا در جمعیت‌های دیگر، بوت‌استرپ و سناریوهای تغییر توازن کلاس به آزمایش‌های تکمیلی نیاز دارند.
+
+کاهش منفی کاذب در تحلیل خطر اهمیت دارد، اما هزینۀ مداخله و پیامد مثبت کاذب نیز باید در یک مطالعۀ بالینی و با رضایت و نظارت مناسب سنجیده شود. پیکرۀ شبکۀ اجتماعی و انتخاب آستانۀ مبتنی بر $F_1$، به‌تنهایی سیاست تصمیم‌گیری برای فرد واقعی تعریف نمی‌کنند. بررسی کاربران مستقل، دادۀ بیرونی، چند بذر و فاصلۀ اطمینان از گام‌های ضروری برای گسترش اعتبار پژوهش است.
+\FloatBarrier

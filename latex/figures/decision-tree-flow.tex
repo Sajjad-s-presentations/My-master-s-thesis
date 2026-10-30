@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (search) {\diagramtext{انتخاب فراپارامتر از ۱۰ ترکیب با اعتبارسنجی سه‌بخشی روی آموزش\\
+  بازنمایی هر تقسیم فقط بر بخش آموزشی همان تقسیم یاد گرفته می‌شود}};
+\node[stage,below=of search] (split) {\diagramtext{ساخت بازگشتی درخت با بیشینه‌سازی کاهش ناخالصی\\
+  توقف بر اساس عمق، اندازۀ برگ و دیگر قیدهای مدل}};
+\node[stage,below=of split] (leaf) {\diagramtext{ورودی جدید از ریشه و شرط گره‌ها به برگ می‌رسد\\
+  $p(y=1\mid x)=N_{+,\mathrm{leaf}}/N_{\mathrm{leaf}}$}};
+\node[stage,below=of leaf] (out) {\diagramtext{انتخاب آستانه روی اعتبارسنجی مستقل\\
+  احتمال برگ و آستانۀ تثبیت‌شده، برچسب نهایی را تعیین می‌کنند}};
+\foreach \a/\b in {search/split,split/leaf,leaf/out}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

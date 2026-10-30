@@ -1,0 +1,18 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=blue!50!black,fill=blue!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=blue!50!black}]
+\node[stage] (partition) {\diagramtext{تخصیص بدون هم‌پوشانیِ آموزش به $K$ کلاینت\\
+  حفظ تقریبی نسبت دو کلاس؛ هر ردیف دقیقاً در یک بخش محلی}};
+\node[stage,below=of partition] (local) {\diagramtext{کلاینت $k$: یادگیری \en{Word2Vec} و \en{XGBoost} بر $D_k$\\
+  واژگان و مدل محلی از اعتبارسنجی و آزمون یاد نمی‌گیرند}};
+\node[stage,below=of local] (infer) {\diagramtext{برای متن ارزیابی $x$، هر کلاینت احتمال $p_k(x)$ را برمی‌گرداند\\
+  پارامترهای درخت یا مختصات بازنمایی با هم میانگین گرفته نمی‌شوند}};
+\node[stage,below=of infer] (aggregate) {\diagramtext{تجمیع احتمال‌ها با وزن اندازۀ دادۀ محلی\\
+  $p_{\mathrm{ens}}(x)=\sum_{k=1}^{K}\frac{|D_k|}{\sum_j|D_j|}p_k(x)$}};
+\node[stage,below=of aggregate] (evaluate) {\diagramtext{انتخاب آستانه بر اعتبارسنجی؛ ارزیابی ثابت بر آزمون مشترک\\
+  خروجی‌های یادگیری در نوت‌بوک به‌صورت آشکار تجمیع شده‌اند}};
+\foreach \a/\b in {partition/local,local/infer,infer/aggregate,aggregate/evaluate}
+  \draw[flow] (\a) -- (\b);
+\end{tikzpicture}

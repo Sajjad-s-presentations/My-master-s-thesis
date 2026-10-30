@@ -1,0 +1,17 @@
+\begin{tikzpicture}[
+  node distance=6mm,
+  stage/.style={draw=blue!50!black,fill=blue!3,rounded corners=3pt,
+    inner sep=7pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=blue!50!black}]
+\node[stage] (key) {\diagramtext{تولید کلید پاییه با پارامترهای معتبر\\
+  $n=pq,\quad\lambda=\lcm(p-1,q-1)$\\
+  $\mu=[L(g^\lambda\bmod n^2)]^{-1}\bmod n$}};
+\node[stage,below=of key] (enc) {\diagramtext{رمزگذاری پیام با تصادف تازه\\
+  $m\in\Z_n,\quad u\in\Z_n^*,\quad c=g^m u^n\bmod n^2$}};
+\node[stage,below=of enc] (agg) {\diagramtext{تجمیع جمعی و وزن‌دار در دامنۀ رمز\\
+  $C=\prod_i c_i^{w_i}\bmod n^2$}};
+\node[stage,below=of agg] (dec) {\diagramtext{رمزگشایی با کلید خصوصی\\
+  $L(v)=(v-1)/n,\quad M=L(C^\lambda\bmod n^2)\mu\bmod n$\\
+  $M=\sum_iw_im_i\pmod n$؛ برای مجموع صحیح، نبود سرریز لازم است}};
+\foreach \a/\b in {key/enc,enc/agg,agg/dec}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (start) {\diagramtext{آغاز از امتیاز پایۀ لجستیک $F_0$ و فراپارامترهای هر ترکیب}};
+\node[stage,below=of start] (gradient) {\diagramtext{محاسبۀ گرادیان و هسین زیان برای نمونه‌های آموزش\\
+  ساخت درخت با سود تقسیم و جریمۀ پیچیدگی}};
+\node[stage,below=of gradient] (update) {\diagramtext{تعیین وزن برگ و افزودن درخت جدید\\
+  $\omega_j=-G_j/(H_j+\lambda),\quad F_t=F_{t-1}+\eta f_t$}};
+\node[stage,below=of update] (prob) {\diagramtext{پس از تعداد درخت تعیین‌شده، تبدیل امتیاز به احتمال\\
+  $p(x)=[1+\exp(-F_T(x))]^{-1}$}};
+\node[stage,below=of prob] (out) {\diagramtext{فراپارامترها از اعتبارسنجی متقابل آموزش انتخاب می‌شوند\\
+  مدل و آستانه با اعتبارسنجی مستقل تثبیت می‌شوند}};
+\foreach \a/\b in {start/gradient,gradient/update,update/prob,prob/out}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

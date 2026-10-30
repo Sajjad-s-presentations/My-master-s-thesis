@@ -1,0 +1,22 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (text) {\diagramtext{متن ورودی و تبدیل برگشت‌پذیر به بایت با \en{UTF-8}}};
+\node[stage,below=of text] (aes) {\diagramtext{تولید کلید تصادفی $K$ و \en{nonce} یکتا برای همان کلید\\
+  $(C,T)=\operatorname{AES\text{-}GCM.Enc}(K,IV,M,AAD)$}};
+\node[stage,below=of aes] (share) {\diagramtext{تسهیم کلید با آستانۀ $t$ در میدان $\F_p$ با $p>2^{256}$\\
+  $f(z)=K+\sum_{j=1}^{t-1}a_jz^j,\quad a_j\overset{\$}{\leftarrow}\F_p$\\
+  سهم کلاینت $i$: $(i,f(i))$؛ شناسه‌ها متمایز و ناصفرند}};
+\node[stage,below=of share] (send) {\diagramtext{توزیع هر سهم از کانال امن به صاحب آن\\
+  نگهداری متن رمز، برچسب و پارامترهای نشست؛ حفاظت از ارتباط آن‌ها}};
+\node[stage,below=of send] (recover) {\diagramtext{گردآوری دست‌کم $t$ سهم و درون‌یابی لاگرانژ\\
+  $K=f(0)=\sum_{i\in I} f(i)\prod_{j\in I\setminus\{i\}}\frac{-j}{i-j}\pmod p$}};
+\node[stage,below=of recover] (verify) {\diagramtext{بررسی برچسب \en{GCM} پیش از تحویل هر متن آشکار\\
+  شکست بررسی: رد پیام؛ موفقیت: رمزگشایی معتبر و بازگشایی \en{UTF-8}}};
+\node[stage,below=of verify] (trust) {\diagramtext{تولیدکنندۀ کلید در ابتدا $K$ را می‌داند\\
+  تسهیم راز، آستانۀ بازسازی را کنترل می‌کند؛ تضمین حذف نسخۀ کلید نیست}};
+\foreach \a/\b in {text/aes,aes/share,share/send,send/recover,recover/verify,verify/trust}
+  \draw[flow] (\a) -- (\b);
+\end{tikzpicture}

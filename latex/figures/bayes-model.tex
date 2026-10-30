@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (vector) {\diagramtext{بردار صدبعدی سند و استانداردسازی آموخته‌شده بر آموزش\\
+  $z_j=(x_j-\mu_{j,\mathrm{train}})/s_{j,\mathrm{train}}$}};
+\node[stage,below=of vector] (fit) {\diagramtext{برازش دو مدل روی همان بخش آموزش\\
+  \en{GaussianNB}: واریانس هموارشده؛ \en{BernoulliNB}: دودویی‌سازی در صفر}};
+\node[stage,below=of fit] (vote) {\diagramtext{ترکیب احتمال دو مدل با رأی‌گیری نرم و وزن برابر\\
+  $p(c\mid x)=\tfrac12[p_{\mathrm G}(c\mid z)+p_{\mathrm B}(c\mid z)]$}};
+\node[stage,below=of vote] (threshold) {\diagramtext{انتخاب آستانۀ احتمال روی اعتبارسنجی مستقل\\
+  این آستانه با آستانۀ دودویی‌سازی ویژگی‌های برنولی متفاوت است}};
+\foreach \a/\b in {vector/fit,fit/vote,vote/threshold}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

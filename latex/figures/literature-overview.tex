@@ -1,0 +1,18 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (nlp) {\diagramtext{تحلیل متن سلامت روان\\
+  تعریف برچسب، نمایش متن، جداسازی داده و اعتبار ارزیابی}};
+\node[stage,below=of nlp] (fl) {\diagramtext{یادگیری مشارکتی در سلامت\\
+  آموزش محلی، توزیع کلاینت‌ها، ناهمگونی و روش تجمیع}};
+\node[stage,below=of fl] (crypto) {\diagramtext{محاسبۀ رمزگذاری‌شده و تجمیع امن\\
+  عملیات مجاز، مدل اعتماد، دارندۀ کلید و اطلاعات آشکارشده}};
+\node[stage,below=of crypto] (thesis) {\diagramtext{مسیر ارزیابی این پایان‌نامه\\
+  مقایسۀ متمرکز، مجموعۀ مدل‌های محلی و بنچمارک مستقل رمزنگاری\\
+  اتصال سرتاسری نیازمند سنجش نمایش عددی، ظرفیت و سیاست کلید است}};
+\draw[flow] (nlp) -- (fl);
+\draw[flow] (fl) -- (crypto);
+\draw[flow] (crypto) -- (thesis);
+\end{tikzpicture}

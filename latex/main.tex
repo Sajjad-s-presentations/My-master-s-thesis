@@ -1,6 +1,7 @@
 % !TeX program = xelatex
 \documentclass[12pt,a4paper,oneside,openany]{book}
 \usepackage{sbu-thesis}
+\input{results/models/summary}
 \begin{document}
 \frontmatter
 \hypersetup{pageanchor=false}
@@ -8,6 +9,7 @@
 \pagenumbering{harfi}
 \hypersetup{pageanchor=true}
 \input{frontmatter/acknowledgements}
+\input{frontmatter/abstract-fa}
 \tableofcontents
 \clearpage
 \listoffigures
@@ -15,4 +17,22 @@
 \listoftables
 \clearpage
 \mainmatter
+\input{chapters/introduction}
+\input{chapters/literature}
+\input{chapters/nlp}
+\input{chapters/cryptography}
+\input{chapters/sbhe}
+\input{chapters/conclusion}
+\appendix
+\renewcommand{\thechapter}{\ifcase\value{chapter}\or الف\or ب\or ج\or د\or هـ\fi}
+\input{appendices/dena}
+\input{appendices/discrete-log}
+\input{appendices/diffie-hellman}
+\input{appendices/residuosity}
+\input{appendices/ed25519}
+\backmatter
+\input{acronyms}
+\input{glossary}
+\input{references}
+\input{frontmatter/english}
 \end{document}

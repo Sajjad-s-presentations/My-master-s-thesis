@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (unicode) {\diagramtext{بازگشایی \en{HTML}، نرمال‌سازی \en{NFKC} و کوچک‌سازی حروف}};
+\node[stage,below=of unicode] (links) {\diagramtext{حذف نشانی وب، رایانامه، برچسب \en{HTML} و شناسۀ کاربری}};
+\node[stage,below=of links] (negation) {\diagramtext{باز کردن نفی انگلیسی پیش از حذف نشانه‌گذاری\\برای نمونه: \en{can't} به \en{can not}}};
+\node[stage,below=of negation] (tokens) {\diagramtext{حفظ حروف یونیکد، اعداد و واژۀ هشتگ\\تبدیل نشانه‌گذاری و زیرخط به فاصله؛ یکسان‌سازی فاصله‌ها}};
+\node[stage,below=of tokens] (audit) {\diagramtext{در هر بخش: حذف متن خالی، تعارض و تکرار محلی\\حذف هم‌پوشانی از بخش بعدی با اولویت آموزش، اعتبارسنجی، آزمون}};
+\node[stage,below=of audit] (out) {\diagramtext{ممیزی جدایی شناسه و متن پاکسازی‌شده\\بدون فهرست توقف آموخته‌شده یا یادگیری واژگان از ارزیابی}};
+\foreach \a/\b in {unicode/links,links/negation,negation/tokens,tokens/audit,audit/out}
+  \draw[flow] (\a) -- (\b);
+\end{tikzpicture}

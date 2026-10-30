@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (data) {\diagramtext{بردارهای صدبعدی سند از \en{Word2Vec} آموخته‌شده بر آموزش}};
+\node[stage,below=of data] (fit) {\diagramtext{برازش ۲۰۰ درخت با نمونه‌گیری بازگشتی\\
+  در هر گره، جست‌وجوی تقسیم میان زیرمجموعۀ تصادفی ویژگی‌ها}};
+\node[stage,below=of fit] (mean) {\diagramtext{احتمال کلاس مثبت برای ورودی جدید\\
+  $p_{\mathrm{RF}}(x)=\frac1{200}\sum_{b=1}^{200}p_b(y=1\mid x)$}};
+\node[stage,below=of mean] (threshold) {\diagramtext{انتخاب آستانه با $F_1$ بر اعتبارسنجی\\
+  $\widehat y=\mathbf1\{p_{\mathrm{RF}}(x)\ge\tau\}$؛ تثبیت پیش از آزمون}};
+\foreach \a/\b in {data/fit,fit/mean,mean/threshold}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=blue!50!black,fill=blue!3,rounded corners=3pt,
+    inner sep=6pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=blue!50!black}]
+\node[stage] (encode) {\diagramtext{کلاینت مجاز: بررسی مقدار و نمایش دقیق با مقیاس $S=10000$\\
+  $m_i=Sx_i,\quad 0\le m_i\le S,\quad w_i\in\Z_{>0}$}};
+\node[stage,below=of encode] (encrypt) {\diagramtext{رمزگذاری بنالوح با تصادف تازه\\
+  $C_i=y^{m_i}u_i^r\bmod n,\quad u_i\in\Z_n^*$}};
+\node[stage,below=of encrypt] (sign) {\diagramtext{ساخت پیام قطعی شامل شناسۀ طرح، کلاینت، دور، \en{nonce}، متن رمز و وزن\\
+  $M_i=\operatorname{Serialize}(\mathrm{scheme},ID_i,RID,\nu_i,C_i,w_i)$\\
+  $\sigma_i=\Sign_{SK_i}(M_i)$؛ امضای مستقیم با \en{Ed25519}}};
+\node[stage,below=of sign] (verify) {\diagramtext{سرور: بررسی هویت مجاز، دور، وزن، بازپخش و عضویت گروهی\\
+  $\Verify_{PK_i}(M_i,\sigma_i)=\mathrm{true}$\\
+  رد محمولۀ نامعتبر پیش از تجمیع؛ ثبت مشارکت‌های پذیرفته‌شده}};
+\node[stage,below=of verify] (aggregate) {\diagramtext{تجمیع مؤلفۀ رمز‌شدۀ کلاینت‌های پذیرفته‌شده\\
+  $W=\sum_{i\in\mathcal A}w_i,\quad SW<r,\quad
+  C_{\mathrm{agg}}=\prod_{i\in\mathcal A}C_i^{w_i}\bmod n$}};
+\node[stage,below=of aggregate] (decrypt) {\diagramtext{رمزگشایی و بازیابی میانگین\\
+  $M=\Dec_B(C_{\mathrm{agg}}),\quad \bar x=M/(SW)$}};
+\node[stage,below=of decrypt] (limit) {\diagramtext{سرورِ مالک کلید خصوصی توان رمزگشایی پیام منفرد را نیز دارد\\
+  امضا، صحت مقدار ادعاییِ یک کلاینت مجاز را اثبات نمی‌کند}};
+\foreach \a/\b in {encode/encrypt,encrypt/sign,sign/verify,verify/aggregate,aggregate/decrypt,decrypt/limit}
+  \draw[flow] (\a) -- (\b);
+\end{tikzpicture}

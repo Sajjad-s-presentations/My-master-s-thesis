@@ -1,0 +1,19 @@
+\begin{tikzpicture}[
+  node distance=6mm,
+  stage/.style={draw=teal!60!black,fill=teal!3,rounded corners=3pt,
+    inner sep=7pt,font=\small},
+  flow/.style={-{Latex[length=2.2mm]},thick,draw=teal!60!black}]
+\node[stage] (key) {\diagramtext{تولید کلید بنالوح با شرایط بخش‌پذیری و هم‌اولی متن\\
+  $n=pq,\quad a=y^{\varphi(n)/r}\bmod n,\quad\operatorname{ord}(a)=r$\\
+  کلید عمومی $(n,y,r)$؛ فضای پیام $\Z_r$}};
+\node[stage,below=of key] (enc) {\diagramtext{رمزگذاری با تصادف تازه\\
+  $0\le m<r,\quad u\in\Z_n^*,\quad c=y^m u^r\bmod n$}};
+\node[stage,below=of enc] (agg) {\diagramtext{تجمیع وزن‌دار در پیمانۀ $n$\\
+  $C=\prod_i c_i^{w_i}\bmod n$}};
+\node[stage,below=of agg] (dec) {\diagramtext{رمزگشایی در زیرگروه مرتبۀ $r$\\
+  $b=C^{\varphi(n)/r}\bmod n,\quad a^M=b\pmod n$\\
+  بازیابی $M=\sum_iw_im_i\pmod r$ با لگاریتم گسستۀ محدود}};
+\node[stage,below=of dec] (limit) {\diagramtext{شرط بازیابی مجموع صحیح: $\sum_iw_im_i<r$\\
+  در نمایش $0\le m_i\le S$، شرط کافی $S\sum_iw_i<r$ است}};
+\foreach \a/\b in {key/enc,enc/agg,agg/dec,dec/limit}\draw[flow] (\a) -- (\b);
+\end{tikzpicture}

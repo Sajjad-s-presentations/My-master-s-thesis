@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+  node distance=7mm,
+  stage/.style={draw=blue!45!black,fill=blue!3,rounded corners=3pt,
+    inner sep=7pt,font=\small},
+  flow/.style={-{Latex[length=2.3mm]},thick,draw=blue!50!black}]
+\node[stage] (raw) {\diagramtext{مجموعۀ خام ۲۳۲٬۰۷۴ ردیفی\\کنترل برچسب و متن، حذف تکرار خام و نگهداری نسخۀ داده}};
+\node[stage,below=of raw] (split) {\diagramtext{تقسیم طبقه‌بندی‌شده با بذر ۴۲\\آموزش ۶۴ درصد، اعتبارسنجی ۱۶ درصد، آزمون ۲۰ درصد}};
+\node[stage,below=of split] (clean) {\diagramtext{پاکسازی ثابت و کنترل هم‌پوشانی با اولویت آموزش\\۱۴۸٬۳۸۰ آموزش؛ ۳۷٬۰۸۶ اعتبارسنجی؛ ۴۶٬۳۴۲ آزمون}};
+\node[stage,below=of clean] (cv) {\diagramtext{خط‌لولۀ واژه‌سازی، \en{Word2Vec} صدبعدی و طبقه‌بند\\اعتبارسنجی متقابل و تنظیم فراپارامتر فقط روی آموزش}};
+\node[stage,below=of cv] (refit) {\diagramtext{برازش چهار مدل نهایی روی آموزش کامل\\واژگان و بازنمایی از اعتبارسنجی یا آزمون یاد گرفته نمی‌شوند}};
+\node[stage,below=of refit] (select) {\diagramtext{انتخاب آستانۀ هر مدل و انتخاب مدل فقط بر اعتبارسنجی\\تثبیت انتخاب پیش از ارزیابی آزمون}};
+\node[stage,below=of select] (test) {\diagramtext{ارزیابی آزمون برای مدل منتخب و گزارش دو آستانه\\ذخیرۀ معیارها، شمارش خطا، نمودارها و فرادادۀ اجرا}};
+\foreach \a/\b in {raw/split,split/clean,clean/cv,cv/refit,refit/select,select/test}
+  \draw[flow] (\a) -- (\b);
+\end{tikzpicture}

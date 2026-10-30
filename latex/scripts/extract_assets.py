@@ -28,6 +28,16 @@ manifest = []
 for page_number, page in enumerate(document, 1):
     for number, image in enumerate(page.get_images(full=True), 1):
         extracted = document.extract_image(image[0])
+        if image[1]:
+            # Word stores the university logo's transparency in a separate mask.
+            # Keeping only the RGB stream would give it a black background.
+            colour = fitz.Pixmap(document, image[0])
+            if colour.alpha:
+                colour = fitz.Pixmap(colour, 0)  # Remove an opaque helper alpha.
+            alpha = fitz.Pixmap(document, image[1])
+            rgba = fitz.Pixmap(colour, alpha)
+            extracted['image'] = rgba.tobytes('png')
+            extracted['ext'] = 'png'
         stem = names.get(page_number, f'page-{page_number:03d}')
         if number > 1:
             stem += f'-{number}'
@@ -37,7 +47,8 @@ for page_number, page in enumerate(document, 1):
             'page': page_number, 'path': str(path.relative_to(ROOT / 'latex')),
             'width': extracted['width'], 'height': extracted['height'],
             'sha256': hashlib.sha256(extracted['image']).hexdigest(),
-            'superseded': stem.startswith('old-'),
+            'soft_mask_restored': bool(image[1]),
+            'superseded': stem.startswith('old-') or page_number in {28,34,41,44,57,62,67,73,94,98,101,104,121},
         })
 (OUT / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
 print(f'Extracted {len(manifest)} illustrations; original page text is not used as an image.')
