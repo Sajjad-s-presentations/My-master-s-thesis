@@ -1,0 +1,5 @@
+n_clients,test_accuracy,test_precision_positive,test_recall_positive,test_f1_positive,test_f1_macro,test_roc_auc,test_average_precision
+10,0.9163,0.9135,0.9199,0.9167,0.9163,0.9727,0.9722
+20,0.9092,0.905,0.9146,0.9098,0.9092,0.9686,0.968
+50,0.8923,0.8857,0.901,0.8933,0.8922,0.9581,0.9582
+100,0.87,0.8578,0.8874,0.8724,0.87,0.9435,0.945

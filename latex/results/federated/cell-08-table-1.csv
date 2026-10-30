@@ -1,0 +1,4 @@
+label,non-suicide,suicide,total,positive_fraction
+train,74133,74247,148380,0.500384
+validation,18525,18561,37086,0.500485
+test,23145,23197,46342,0.500561

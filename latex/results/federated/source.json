@@ -1,0 +1,421 @@
+{
+  "source_notebook": "Notebooks/federated_xgboost_10_20_50_100.ipynb",
+  "source_sha256": "31aa26aacad96b087ba3322052e54798520b12b3df5436122ec23874949733f8",
+  "dataset_sha256": "1ec16b065a2fae36488de16e8abfc326586a576a25901e09467223e545ddd295",
+  "precision": "Rounded values archived in notebook HTML outputs; no full-precision predictions inferred.",
+  "artifacts": [
+    {
+      "cell": 3,
+      "type": "table",
+      "path": "latex/results/federated/cell-03-table-0.csv",
+      "rows": 7,
+      "columns": [
+        "row",
+        "Runtime version"
+      ]
+    },
+    {
+      "cell": 5,
+      "type": "table",
+      "path": "latex/results/federated/cell-05-table-0.csv",
+      "rows": 6,
+      "columns": [
+        "row",
+        "Rows"
+      ]
+    },
+    {
+      "cell": 8,
+      "type": "table",
+      "path": "latex/results/federated/cell-08-table-0.csv",
+      "rows": 3,
+      "columns": [
+        "split",
+        "before",
+        "empty_after_cleaning",
+        "duplicates_of_earlier_split",
+        "local_conflicting_label_rows",
+        "local_duplicates",
+        "after"
+      ]
+    },
+    {
+      "cell": 8,
+      "type": "table",
+      "path": "latex/results/federated/cell-08-table-1.csv",
+      "rows": 3,
+      "columns": [
+        "label",
+        "non-suicide",
+        "suicide",
+        "total",
+        "positive_fraction"
+      ]
+    },
+    {
+      "cell": 9,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-09-figure-0.png"
+    },
+    {
+      "cell": 13,
+      "type": "table",
+      "path": "latex/results/federated/cell-13-table-0.csv",
+      "rows": 4,
+      "columns": [
+        "n_clients",
+        "clients_per_run",
+        "min_rows",
+        "mean_rows",
+        "max_rows",
+        "min_positive_fraction",
+        "max_positive_fraction"
+      ]
+    },
+    {
+      "cell": 18,
+      "type": "table",
+      "path": "latex/results/federated/cell-18-table-0.csv",
+      "rows": 4,
+      "columns": [
+        "split",
+        "setting",
+        "threshold",
+        "accuracy",
+        "balanced_accuracy",
+        "precision_positive",
+        "recall_positive",
+        "f1_positive",
+        "f1_macro",
+        "f1_weighted",
+        "roc_auc",
+        "average_precision",
+        "specificity",
+        "tn",
+        "fp",
+        "fn",
+        "tp"
+      ]
+    },
+    {
+      "cell": 18,
+      "type": "table",
+      "path": "latex/results/federated/cell-18-table-1.csv",
+      "rows": 5,
+      "columns": [
+        "row",
+        "client_id",
+        "n_train",
+        "n_positive",
+        "positive_fraction",
+        "w2v_seconds",
+        "embedding_seconds",
+        "xgb_seconds",
+        "fit_seconds",
+        "train_accuracy_at_05",
+        "vocabulary_size",
+        "train_token_coverage",
+        "validation_token_coverage",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "validation_predict_seconds",
+        "test_predict_seconds",
+        "weight",
+        "validation_f1_at_05"
+      ]
+    },
+    {
+      "cell": 18,
+      "type": "table",
+      "path": "latex/results/federated/cell-18-table-2.csv",
+      "rows": 3,
+      "columns": [
+        "row",
+        "n_train",
+        "vocabulary_size",
+        "train_accuracy_at_05",
+        "validation_f1_at_05",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "fit_seconds"
+      ]
+    },
+    {
+      "cell": 18,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-18-figure-0.png"
+    },
+    {
+      "cell": 20,
+      "type": "table",
+      "path": "latex/results/federated/cell-20-table-0.csv",
+      "rows": 4,
+      "columns": [
+        "split",
+        "setting",
+        "threshold",
+        "accuracy",
+        "balanced_accuracy",
+        "precision_positive",
+        "recall_positive",
+        "f1_positive",
+        "f1_macro",
+        "f1_weighted",
+        "roc_auc",
+        "average_precision",
+        "specificity",
+        "tn",
+        "fp",
+        "fn",
+        "tp"
+      ]
+    },
+    {
+      "cell": 20,
+      "type": "table",
+      "path": "latex/results/federated/cell-20-table-1.csv",
+      "rows": 5,
+      "columns": [
+        "row",
+        "client_id",
+        "n_train",
+        "n_positive",
+        "positive_fraction",
+        "w2v_seconds",
+        "embedding_seconds",
+        "xgb_seconds",
+        "fit_seconds",
+        "train_accuracy_at_05",
+        "vocabulary_size",
+        "train_token_coverage",
+        "validation_token_coverage",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "validation_predict_seconds",
+        "test_predict_seconds",
+        "weight",
+        "validation_f1_at_05"
+      ]
+    },
+    {
+      "cell": 20,
+      "type": "table",
+      "path": "latex/results/federated/cell-20-table-2.csv",
+      "rows": 3,
+      "columns": [
+        "row",
+        "n_train",
+        "vocabulary_size",
+        "train_accuracy_at_05",
+        "validation_f1_at_05",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "fit_seconds"
+      ]
+    },
+    {
+      "cell": 20,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-20-figure-0.png"
+    },
+    {
+      "cell": 22,
+      "type": "table",
+      "path": "latex/results/federated/cell-22-table-0.csv",
+      "rows": 4,
+      "columns": [
+        "split",
+        "setting",
+        "threshold",
+        "accuracy",
+        "balanced_accuracy",
+        "precision_positive",
+        "recall_positive",
+        "f1_positive",
+        "f1_macro",
+        "f1_weighted",
+        "roc_auc",
+        "average_precision",
+        "specificity",
+        "tn",
+        "fp",
+        "fn",
+        "tp"
+      ]
+    },
+    {
+      "cell": 22,
+      "type": "table",
+      "path": "latex/results/federated/cell-22-table-1.csv",
+      "rows": 5,
+      "columns": [
+        "row",
+        "client_id",
+        "n_train",
+        "n_positive",
+        "positive_fraction",
+        "w2v_seconds",
+        "embedding_seconds",
+        "xgb_seconds",
+        "fit_seconds",
+        "train_accuracy_at_05",
+        "vocabulary_size",
+        "train_token_coverage",
+        "validation_token_coverage",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "validation_predict_seconds",
+        "test_predict_seconds",
+        "weight",
+        "validation_f1_at_05"
+      ]
+    },
+    {
+      "cell": 22,
+      "type": "table",
+      "path": "latex/results/federated/cell-22-table-2.csv",
+      "rows": 3,
+      "columns": [
+        "row",
+        "n_train",
+        "vocabulary_size",
+        "train_accuracy_at_05",
+        "validation_f1_at_05",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "fit_seconds"
+      ]
+    },
+    {
+      "cell": 22,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-22-figure-0.png"
+    },
+    {
+      "cell": 24,
+      "type": "table",
+      "path": "latex/results/federated/cell-24-table-0.csv",
+      "rows": 4,
+      "columns": [
+        "split",
+        "setting",
+        "threshold",
+        "accuracy",
+        "balanced_accuracy",
+        "precision_positive",
+        "recall_positive",
+        "f1_positive",
+        "f1_macro",
+        "f1_weighted",
+        "roc_auc",
+        "average_precision",
+        "specificity",
+        "tn",
+        "fp",
+        "fn",
+        "tp"
+      ]
+    },
+    {
+      "cell": 24,
+      "type": "table",
+      "path": "latex/results/federated/cell-24-table-1.csv",
+      "rows": 5,
+      "columns": [
+        "row",
+        "client_id",
+        "n_train",
+        "n_positive",
+        "positive_fraction",
+        "w2v_seconds",
+        "embedding_seconds",
+        "xgb_seconds",
+        "fit_seconds",
+        "train_accuracy_at_05",
+        "vocabulary_size",
+        "train_token_coverage",
+        "validation_token_coverage",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "validation_predict_seconds",
+        "test_predict_seconds",
+        "weight",
+        "validation_f1_at_05"
+      ]
+    },
+    {
+      "cell": 24,
+      "type": "table",
+      "path": "latex/results/federated/cell-24-table-2.csv",
+      "rows": 3,
+      "columns": [
+        "row",
+        "n_train",
+        "vocabulary_size",
+        "train_accuracy_at_05",
+        "validation_f1_at_05",
+        "test_token_coverage",
+        "test_all_oov_fraction",
+        "fit_seconds"
+      ]
+    },
+    {
+      "cell": 24,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-24-figure-0.png"
+    },
+    {
+      "cell": 26,
+      "type": "table",
+      "path": "latex/results/federated/cell-26-table-0.csv",
+      "rows": 4,
+      "columns": [
+        "n_clients",
+        "threshold",
+        "mean_client_rows",
+        "validation_f1_positive",
+        "test_accuracy",
+        "test_precision_positive",
+        "test_recall_positive",
+        "test_f1_positive",
+        "test_f1_macro",
+        "test_roc_auc",
+        "test_average_precision",
+        "test_fn",
+        "test_fp",
+        "pipeline_wall_seconds"
+      ]
+    },
+    {
+      "cell": 26,
+      "type": "table",
+      "path": "latex/results/federated/cell-26-table-1.csv",
+      "rows": 4,
+      "columns": [
+        "n_clients",
+        "test_accuracy",
+        "test_precision_positive",
+        "test_recall_positive",
+        "test_f1_positive",
+        "test_f1_macro",
+        "test_roc_auc",
+        "test_average_precision"
+      ]
+    },
+    {
+      "cell": 28,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-28-figure-0.png"
+    },
+    {
+      "cell": 28,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-28-figure-1.png"
+    },
+    {
+      "cell": 28,
+      "type": "figure",
+      "path": "latex/figures/federated/cell-28-figure-2.png"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+split,setting,threshold,accuracy,balanced_accuracy,precision_positive,recall_positive,f1_positive,f1_macro,f1_weighted,roc_auc,average_precision,specificity,tn,fp,fn,tp
+validation,default_0.50,0.5,0.9191,0.9191,0.9151,0.9241,0.9196,0.9191,0.9191,0.9734,0.9728,0.9141,16933,1592,1409,17152
+validation,validation_selected,0.49,0.9191,0.9191,0.9135,0.9261,0.9198,0.9191,0.9191,0.9734,0.9728,0.9121,16897,1628,1371,17190
+test,default_0.50,0.5,0.9163,0.9163,0.9135,0.9199,0.9167,0.9163,0.9163,0.9727,0.9722,0.9127,21125,2020,1859,21338
+test,validation_selected,0.49,0.9158,0.9158,0.9107,0.9222,0.9164,0.9158,0.9158,0.9727,0.9722,0.9094,21048,2097,1805,21392

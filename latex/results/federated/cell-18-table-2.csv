@@ -1,0 +1,4 @@
+row,n_train,vocabulary_size,train_accuracy_at_05,validation_f1_at_05,test_token_coverage,test_all_oov_fraction,fit_seconds
+min,14837.0,17364.0,0.9619,0.908,0.9854,0.0004,30.1716
+mean,14838.0,17618.2,0.9642,0.9098,0.986,0.0004,35.3874
+max,14839.0,18018.0,0.967,0.9115,0.9862,0.0005,36.859
