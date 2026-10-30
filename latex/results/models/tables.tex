@@ -1,0 +1,95 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{مقایسۀ چهار مدل بر اعتبارسنجی؛ تمام معیارها در مقیاس صفر تا یک‌اند}
+\label{tab:models-validation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+مدل & آستانه & دقت کلی & دقت مثبت & بازیابی مثبت & $F_1$ مثبت & $F_1$ کلان & \en{ROC AUC} \\
+\midrule
+\en{XGBoost} & 0.38 & 0.9311 & 0.9216 & 0.9424 & 0.9319 & 0.9310 & 0.9804 \\
+جنگل تصادفی & 0.46 & 0.9190 & 0.9156 & 0.9232 & 0.9194 & 0.9190 & 0.9729 \\
+درخت تصمیم & 0.48 & 0.8759 & 0.8584 & 0.9007 & 0.8790 & 0.8758 & 0.9398 \\
+رأی‌گیری بیز ساده & 0.66 & 0.8723 & 0.8808 & 0.8614 & 0.8710 & 0.8723 & 0.9368 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{ارزیابی آزمون فقط برای مدل منتخب؛ دو تنظیم آستانه برای همان مدل}
+\label{tab:models-test}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+تنظیم & آستانه & دقت کلی & دقت مثبت & بازیابی مثبت & $F_1$ مثبت & \en{ROC AUC} & \en{AP} \\
+\midrule
+پیش‌فرض & 0.50 & 0.9287 & 0.9300 & 0.9273 & 0.9287 & 0.9792 & 0.9786 \\
+منتخب اعتبارسنجی & 0.38 & 0.9270 & 0.9183 & 0.9375 & 0.9278 & 0.9792 & 0.9786 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{گزارش برازش و جست‌وجو؛ خط تیره یعنی جست‌وجوی اعتبارسنجی برای آن مدل تعریف نشده است}
+\label{tab:models-training}
+\begin{tabular}{lrr}
+\toprule
+مدل & بهترین $F_1$ در جست‌وجوی آموزش & زمان برازش/جست‌وجو (ثانیه) \\
+\midrule
+جنگل تصادفی & \en{--} & 724.0098 \\
+درخت تصمیم & 0.8759 & 2097.3873 \\
+\en{XGBoost} & 0.9273 & 1314.3949 \\
+رأی‌گیری بیز ساده & \en{--} & 42.6454 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{فراپارامترهای منتخب جست‌وجوی تصادفی؛ انتخاب فقط از اعتبارسنجی متقابلِ آموزش}
+\label{tab:models-hyperparameters}
+\begin{tabular}{lp{0.62\textwidth}}
+\toprule
+مدل & مقدارهای منتخب \\
+\midrule
+درخت تصمیم & \engcell{\texttt{class\_weight}=None, \texttt{criterion}=log\_loss, \texttt{max\_depth}=10, \texttt{max\_features}=None, \texttt{min\_samples\_leaf}=20, \texttt{min\_samples\_split}=50} \\
+\en{XGBoost} & \engcell{\texttt{learning\_rate}=0.2, \texttt{max\_depth}=10, \texttt{n\_estimators}=150} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{پوشش بازنمایی مدل منتخب؛ واژگان فقط از آموزش آموخته شده‌اند}
+\label{tab:models-coverage}
+\begin{tabular}{lrrrr}
+\toprule
+بخش & تعداد سند & پوشش توکن & سند کاملاً ناشناخته & سهم سند ناشناخته \\
+\midrule
+آموزش & 148380 & 0.9969 & 39 & 0.0003 \\
+اعتبارسنجی & 37086 & 0.9922 & 13 & 0.0004 \\
+آزمون & 46342 & 0.9949 & 15 & 0.0003 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{شمارش خطاهای مدل منتخب در آزمون، با آستانۀ تثبیت‌شده}
+\label{tab:models-errors}
+\begin{tabular}{rrrr}
+\toprule
+$TN$ & $FP$ & $FN$ & $TP$ \\
+\midrule
+21211 & 1934 & 1450 & 21747 \\
+\bottomrule
+\end{tabular}
+\end{table}

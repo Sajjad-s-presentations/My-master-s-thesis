@@ -1,0 +1,43 @@
+{
+  "best_model": "XGBoost",
+  "selected_threshold": 0.38,
+  "seed": 42,
+  "dataset_sha256": "1ec16b065a2fae36488de16e8abfc326586a576a25901e09467223e545ddd295",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "gensim": "4.4.0",
+    "xgboost": "not installed"
+  },
+  "python": "3.12.14",
+  "cv_folds": 3,
+  "search_iterations": 10,
+  "word2vec": {
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 2,
+    "sg": 1,
+    "epochs": 5,
+    "workers": 1,
+    "seed": 42
+  },
+  "best_parameters": {
+    "Decision Tree": {
+      "classifier__min_samples_split": 50,
+      "classifier__min_samples_leaf": 20,
+      "classifier__max_features": null,
+      "classifier__max_depth": 10,
+      "classifier__criterion": "log_loss",
+      "classifier__class_weight": null
+    },
+    "XGBoost": {
+      "classifier__n_estimators": 150,
+      "classifier__max_depth": 10,
+      "classifier__learning_rate": 0.2
+    }
+  },
+  "selection": "validation positive F1, macro F1, ROC AUC, model name; final test only for frozen winner",
+  "source_notebook_sha256": "37daa70fc552b8f129ad7453a022cc2f9aacae8ba3b0c12a5fbdf1867fc48ed2"
+}

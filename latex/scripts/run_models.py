@@ -15,6 +15,9 @@ from nbclient import NotebookClient
 ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('dataset', type=Path)
+parser.add_argument('--work-dir', type=Path, default=ROOT.parent/'thesis-output',
+                    help='External working/cache directory; defaults to a sibling of the checkout.')
+parser.add_argument('--kernel-name', default='thesis-results', help='Registered Jupyter kernel.')
 args = parser.parse_args()
 expected = '1ec16b065a2fae36488de16e8abfc326586a576a25901e09467223e545ddd295'
 assert hashlib.sha256(args.dataset.read_bytes()).hexdigest() == expected
@@ -25,11 +28,15 @@ os.environ['SUICIDE_DATA_PATH'] = str(args.dataset.resolve())
 os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 os.environ['OPENBLAS_NUM_THREADS'] = '2'
 os.environ['OMP_NUM_THREADS'] = '2'
-os.environ['MPLCONFIGDIR'] = '/workspace/thesis-output/config/matplotlib'
-os.environ['IPYTHONDIR'] = '/workspace/thesis-output/config/ipython'
-os.environ['JUPYTER_RUNTIME_DIR'] = '/workspace/thesis-output/runtime/jupyter'
-work = Path('/workspace/thesis-output/models-execution')
-work.mkdir(exist_ok=True)
+execution_root = args.work_dir.expanduser().resolve()
+for variable,subdir in [('MPLCONFIGDIR','config/matplotlib'),
+                        ('IPYTHONDIR','config/ipython'),
+                        ('JUPYTER_RUNTIME_DIR','runtime/jupyter')]:
+    directory = execution_root/subdir
+    directory.mkdir(parents=True,exist_ok=True)
+    os.environ[variable] = str(directory)
+work = execution_root/'models-execution'
+work.mkdir(parents=True,exist_ok=True)
 nb = nbformat.read(source, as_version=4)
 nb.cells.append(nbformat.v4.new_markdown_cell(
     '## Thesis export\nAdded by `latex/scripts/run_models.py` after the original '
@@ -99,7 +106,7 @@ def save_progress(cell, cell_index, **kwargs):
     nbformat.write(nb, output / 'executed.ipynb')
     print(time.strftime('%Y-%m-%d %H:%M:%S'), 'completed cell', cell_index, flush=True)
 
-client = NotebookClient(nb, kernel_name='thesis-results', timeout=14400,
+client = NotebookClient(nb, kernel_name=args.kernel_name, timeout=14400,
     resources={'metadata': {'path': str(work)}},
     on_cell_start=progress, on_cell_executed=save_progress)
 try:

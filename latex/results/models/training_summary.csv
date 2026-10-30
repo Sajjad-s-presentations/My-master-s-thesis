@@ -1,0 +1,5 @@
+model,best_cv_score,fit_or_search_seconds
+Random Forest,,724.0097618970001
+Decision Tree,0.8758810825680196,2097.3872836709998
+XGBoost,0.9273496920970712,1314.3948711470002
+Naive Bayes voting,,42.645352709999315

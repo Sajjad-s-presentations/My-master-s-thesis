@@ -1,0 +1,23 @@
+{
+  "dataset_sha256": "1ec16b065a2fae36488de16e8abfc326586a576a25901e09467223e545ddd295",
+  "dataset_original_source": "nikhileswarkomati/suicide-watch",
+  "checksum_matched_archive": "https://raw.githubusercontent.com/KoreanMSG/anymo-ml/main/Suicide_Detection.csv.gz",
+  "raw_dataset_redistributed": false,
+  "source_notebook_sha256": "37daa70fc552b8f129ad7453a022cc2f9aacae8ba3b0c12a5fbdf1867fc48ed2",
+  "federated_notebook_sha256": "31aa26aacad96b087ba3322052e54798520b12b3df5436122ec23874949733f8",
+  "recorded_scientific_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "gensim": "4.4.0",
+    "xgboost": "not installed"
+  },
+  "xgboost_provider": {
+    "distribution": "xgboost-cpu",
+    "version": "3.4.1"
+  },
+  "best_model": "XGBoost",
+  "selection_uses_test": false,
+  "manuscript_values_are_rounded_from_csv": true
+}
