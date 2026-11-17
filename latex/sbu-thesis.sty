@@ -25,6 +25,16 @@
 \newfontfamily\thesissymbolfont{DejaVu Sans}
 \newunicodechar{٫}{{\thesissymbolfont\char"066B}}
 \newunicodechar{٬}{{\thesissymbolfont\char"066C}}
+% Keep every complete number LTR, including font-fallback separators.
+% The surrounding paragraph/table remains RTL; only the number is isolated.
+\newfontfamily\thesisnumberfont[Path=fonts/,BoldFont=BZar-Bold.ttf,Scale=1.10]{BZar.ttf}
+\ExplSyntaxOn
+\NewDocumentCommand{\faNum}{m}
+  {\lr{\thesisnumberfont\str_map_inline:nn {#1}
+    {\str_case:nnF {##1}
+      {{0}{۰}{1}{۱}{2}{۲}{3}{۳}{4}{۴}{5}{۵}{6}{۶}{7}{۷}{8}{۸}{9}{۹}{.}{{\thesissymbolfont\char"066B}}{٫}{{\thesissymbolfont\char"066B}}{٬}{{\thesissymbolfont\char"066C}}}
+      {##1}}}}
+\ExplSyntaxOff
 \newunicodechar{–}{\lr{\textendash}}
 
 \onehalfspacing

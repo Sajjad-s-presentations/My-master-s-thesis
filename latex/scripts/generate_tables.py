@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
+import re
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -13,6 +14,12 @@ parser.add_argument('--benchmarks-only', action='store_true')
 args = parser.parse_args()
 
 
+def tex_number(value):
+    """Isolate complete numeric cells; preserve the measured decimal precision."""
+    text = str(value)
+    return r'\faNum{' + text + '}' if re.fullmatch(r'[0-9]+(?:\.[0-9]+)?', text) else text
+
+
 def table(title, label, headings, rows, spec, resize=False):
     lines = [r'\begin{table}[htbp]', r'\centering', r'\small',
              r'\caption{'+title+'}', r'\label{'+label+'}']
@@ -20,7 +27,7 @@ def table(title, label, headings, rows, spec, resize=False):
         lines.append(r'\resizebox{\textwidth}{!}{%')
     lines += [r'\begin{tabular}{'+spec+'}', r'\toprule',
               ' & '.join(headings)+r' \\', r'\midrule']
-    lines += [' & '.join(map(str,row))+r' \\' for row in rows]
+    lines += [' & '.join(tex_number(value) for value in row)+r' \\' for row in rows]
     lines += [r'\bottomrule', r'\end{tabular}'+('}' if resize else ''), r'\end{table}']
     return '\n'.join(lines).replace('هٔ','ۀ')+'\n'
 
@@ -82,7 +89,7 @@ values = {'BestModel':pretty[best['model']], 'BestModelEnglish':best['model'],
           'DefaultTestAccuracyPercent':f'{100*default_test.accuracy:.2f}',
           'DefaultTestFone':number(default_test.f1_positive),
           'DefaultTestRecall':number(default_test.recall_positive)}
-(output/'summary.tex').write_text('\n'.join('\\newcommand{\\'+key+'}{'+value+'}' for key,value in values.items())+'\n')
+(output/'summary.tex').write_text('\n'.join('\\newcommand{\\'+key+'}{'+tex_number(value)+'}' for key,value in values.items())+'\n')
 
 rows = [[pretty[r['model']],f'{r.threshold:.2f}']+[number(r[c]) for c in [
     'accuracy','precision_positive','recall_positive','f1_positive','f1_macro','roc_auc']]

@@ -84,6 +84,23 @@ for page in doc:
     for link in page.get_links():
         if link['kind']==fitz.LINK_GOTO:
             assert 0<=link['page']<len(doc), f'Invalid internal link on physical page {page.number+1}'
+# Check spatial glyph order, not PDF extraction order (which can mask RTL bugs).
+# Every isolated source number must occur left-to-right in the rendered PDF.
+digit_translation = str.maketrans('0123456789.', '۰۱۲۳۴۵۶۷۸۹٫')
+expected_numbers = {value.translate(digit_translation) for value in
+                    re.findall(r'\\faNum\{([0-9۰-۹٫٬.]+)\}', combined)}
+spatial_lines = []
+for page in doc:
+    for block in page.get_text('rawdict')['blocks']:
+        for line in block.get('lines', []):
+            chars = [c for span in line['spans'] for c in span['chars']]
+            spatial_lines.append(''.join(c['c'] for c in sorted(chars, key=lambda c: c['origin'][0])))
+missing_numbers = sorted(value for value in expected_numbers
+                         if not any(value in line for line in spatial_lines))
+assert not missing_numbers, f'Numbers missing or visually reordered in PDF: {missing_numbers}'
+assert '۴۶٬۳۴۲' in expected_numbers and '۰٫۵۰۰۳۸۴' in expected_numbers
+print(f'PASS: left-to-right glyph order for {len(expected_numbers)} distinct Persian numbers, including separators.')
+
 font_listing = subprocess.check_output(['pdffonts',str(pdf)],text=True)
 assert 'BZar' in font_listing and 'BZarBold' in font_listing, 'Required B Zar regular and bold fonts not embedded.'
 aux = (LATEX/f'build/{job}.aux').read_text()
@@ -166,7 +183,9 @@ if not args.preview:
     assert not any(o.get('output_type')=='error' for c in code for o in c.get('outputs',[]))
     assert (LATEX/'thesis.pdf').read_bytes()==pdf.read_bytes(), 'Published artifact differs from checked build.'
     assert r'\BestModel' not in text and 'در حال محاسبه' not in text
-    ack = (LATEX/'frontmatter/acknowledgements.tex').read_text().split('\n\n')[2]
+    ack_text = (LATEX/'frontmatter/acknowledgements.tex').read_text()
+    ack = next(p for p in ack_text.split('\n\n') if 'داوران گرامی' in p)
+    assert 'دکتر حجت‌الله فراهانی' in ack_text and 'دانشگاه تربیت مدرس' in ack_text
     assert 'دکتر هادی فراهانی' in ack and 'دکتر سعید رضا خردپیشه' in ack
     outline = doc.get_toc()
     fa_page = next(row[2]-1 for row in outline if row[1]=='چکیده')
@@ -191,6 +210,7 @@ if args.report:
         'bibliography_entries':len(bib), 'graphic_placements':len(graphics),
         'pdf_outline_entries':len(doc.get_toc()), 'missing_glyphs':0,
         'undefined_references':0, 'overfull_boxes':0,
+        'spatial_numeric_order_checked':True, 'distinct_isolated_numbers':len(expected_numbers),
         'b_zar_regular_and_bold_embedded':True,
         'federated_client_counts':[10,20,50,100],
         'printed_numerical_tables_match_csv':True,
